@@ -68,7 +68,7 @@ public class GameEngine {
      */
     public GameEngine() {
         //0 (fullSpeed) to Integer.MAX_VALUE (~24 days)
-        gameSpeed = 350;
+        gameSpeed = 0;
         runGameContinuously = false;
 
         // Initialize the deck and shuffle it.
@@ -81,7 +81,7 @@ public class GameEngine {
 
         // Add NPC players to the game. These methods should be defined to add specific types of NPC players.
 
-        //listPlayersRemainingGame.add(new AdamsPlayer("BCA"));
+        listPlayersRemainingGame.add(new ImagineLosing("Luke"));
         //listPlayersRemainingGame.add(new ManualPlayer("Manual"));
         addConservativeNPCs(2);
         addSimpleNPCs(2);
@@ -419,7 +419,7 @@ public class GameEngine {
             System.out.println("Number of games simulated: " + ++numGamesPlayed);
             sleep(10000); // Pause before restarting the game.
 
-            if(runGameContinuously) {
+            if(runGameContinuously && false) {
                 GameEngine game = new GameEngine(); // Create a new instance of the game.
                 game.start(); // Start the new game instance.
             } else {
