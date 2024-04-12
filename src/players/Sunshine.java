@@ -5,9 +5,9 @@ import game.Player;
 
 import java.util.*;
 
-public class ImagineLosing extends Player{
+public class Sunshine extends Player{
 
-    public ImagineLosing(String name) {
+    public Sunshine(String name) {
         super(name);
     }
 
