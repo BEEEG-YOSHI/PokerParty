@@ -7,7 +7,6 @@ import java.util.*;
 
 public class ImagineLosing extends Player{
 
-
     public ImagineLosing(String name) {
         super(name);
     }
