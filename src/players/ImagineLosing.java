@@ -11,6 +11,7 @@ public class ImagineLosing extends Player{
         super(name);
     }
 
+
     @Override
     protected void takePlayerTurn() {
         if(shouldAllIn()){
