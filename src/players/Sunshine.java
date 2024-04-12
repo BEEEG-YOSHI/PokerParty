@@ -13,6 +13,9 @@ public class Sunshine extends Player{
 
 
     @Override
+
+    //This will run through my boolean methods in the order of least likely, for example.
+    //It wont fold if I should all in, because it checks for all in first.
     protected void takePlayerTurn() {
         if(shouldAllIn()){
             allIn();
@@ -31,6 +34,8 @@ public class Sunshine extends Player{
         }
     }
 
+
+    //this is pretty much just a local implementation of the ranking system
     public int returnRank(){
         HandRanks myHand = evaluatePlayerHand();
 
@@ -65,6 +70,9 @@ public class Sunshine extends Player{
         return 0;
     }
 
+
+    //this method determines if a pair (or three of  akind) is unique to me
+    //this is good because it determines if my hand is good, or if everyone has the pair.
     public boolean uniquePair(){
         List<Card> hand = getHandCards();
         int hand1 = hand.get(0).getValue();
@@ -78,6 +86,8 @@ public class Sunshine extends Player{
     }
 
     @Override
+    //My program will fold if there is a bet and all i have is high card. Otherwise it only
+    //folds if the bet is larger than half of my bank
     protected boolean shouldFold() {
         if(returnRank() == 0 && isBetActive()) {
             return true;
@@ -88,6 +98,7 @@ public class Sunshine extends Player{
     }
 
     @Override
+    //It will check no matter what if you are allowed.
     protected boolean shouldCheck() {
         if(getGameState().isActiveBet()){
             return false;
@@ -96,9 +107,10 @@ public class Sunshine extends Player{
     }
 
     @Override
+    //If my hand is pretty good it will call, if not it will make sure the bet is not too high
+    //relative to my bank, then call. If not, it wont call.
     protected boolean shouldCall() {
         if(isBetActive()){
-
             if(returnRank() > 3 && getBet() <= (int)(0.25*getBank())){
                 return true;
             } else if (returnRank() > 4){
@@ -109,6 +121,7 @@ public class Sunshine extends Player{
     }
 
     @Override
+    //If my rank is high enough I will raise, if it is not high enough, but there is not a bet, it will raise anyways.
     protected boolean shouldRaise() {
         if(returnRank() > 2){
             return true;
@@ -120,6 +133,7 @@ public class Sunshine extends Player{
     }
 
     @Override
+    //If my rank is considered very high, I should all in
     protected boolean shouldAllIn() {
         if(returnRank() > 6){
             return true;
